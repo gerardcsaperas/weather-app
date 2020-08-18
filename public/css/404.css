@@ -1,0 +1,20 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+p {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20rem;
+    color: #666;
+}
+
+a {
+    color: #444;
+    text-decoration: none;
+}
