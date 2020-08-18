@@ -3,7 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 
 // Import function to get current weather from latitude, longitude
-const getCurrentWeather = require('./middleware/weather');
+const { getCurrentWeatherFromLatLon, getCurrentWeatherFromCity } = require('./middleware/weather');
 
 const app = express();
 
@@ -29,9 +29,14 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => res.render('about'));
 app.get('/about/*', (req, res) => res.render('404'));
 
-app.get('/geo', getCurrentWeather, (req, res) => {
+app.get('/weather-from-geo', getCurrentWeatherFromLatLon, (req, res) => {
 	res.send(req.data);
 });
+
+app.get('/weather-from-city', getCurrentWeatherFromCity, (req, res) => {
+	res.send(req.data);
+});
+
 // Get 404s
 app.get('*', (req, res) => res.render('404'));
 
