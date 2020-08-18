@@ -5,7 +5,9 @@ WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 // desc.    Provided latitude, longitude and location
 //          from a data object, returns the current weather
 //          in a location.
-const getCurrentWeather = ({ latitude, longitude, location } = {}) => {
+const getCurrentWeather = (req, res, next) => {
+	const { latitude, longitude } = req.query;
+
 	const url = `http://api.weatherstack.com/current?access_key=${WEATHER_API_KEY}&query=${latitude},${longitude}`;
 
 	request({ url: url, json: true }, (err, res, body) => {
@@ -14,10 +16,16 @@ const getCurrentWeather = ({ latitude, longitude, location } = {}) => {
 
 		const weatherDescription = body.current.weather_descriptions[0];
 		const currTemp = body.current.temperature;
+		const region = body.location.region;
 
-		console.log(
-			`It's currently ${weatherDescription} in ${location}, with a current temperature of is ${currTemp} ºC.`
-		);
+		const response = {
+			weatherDescription,
+			currTemp,
+			region
+		};
+
+		req.data = response;
+		next();
 	});
 };
 

@@ -5,7 +5,9 @@ function getLocation() {
 		navigator.geolocation.getCurrentPosition((data) => {
 			const { latitude, longitude } = data.coords;
 
-			fetch(`/geo?latitude=${latitude}&longitude=${longitude}`);
+			fetch(`/geo?latitude=${latitude}&longitude=${longitude}`)
+				.then((res) => res.json())
+				.then((data) => console.log(data));
 		});
 	} else {
 		x.innerHTML = 'Geolocation is not supported by this browser.';
