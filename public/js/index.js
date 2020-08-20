@@ -61,8 +61,17 @@ function fetchWeather(latitude = null, longitude = null, city = null) {
 				case 'Cloudy':
 					weatherImage.src = '/img/cloudy.png';
 					break;
+				case 'Partly cloudy':
+					weatherImage.src = '/img/partly-cloudy.png';
+					break;
 				case 'Snowing':
 					weatherImage.src = '/img/snowing.png';
+					break;
+				case 'Shower In Vicinity':
+					weatherImage.src = 'img/rainy.png';
+					break;
+				case 'Raining':
+					weatherImage.src = 'img/rainy.png';
 					break;
 				default:
 					weatherImage.src = '/img/idk.gif';
