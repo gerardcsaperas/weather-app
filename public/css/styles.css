@@ -19,12 +19,16 @@ header {
   header nav {
     margin-right: 2rem;
     font-size: 2rem; }
+    header nav .navbar {
+      font-size: 3rem; }
     header nav a {
       color: whitesmoke;
       text-decoration: none;
       margin: 1rem; }
     header nav a:hover {
       text-decoration: underline; }
+    header nav li.nav-item::marker {
+      display: none; }
 
 footer {
   text-align: center;
@@ -43,30 +47,31 @@ div.container {
   flex: 1;
   text-align: center;
   position: relative; }
-  div.container div#response-box {
-    width: 600px;
-    margin: 0 auto; }
-    div.container div#response-box h1 {
-      font-size: 4rem; }
-    div.container div#response-box p {
-      font-size: 2rem; }
-    div.container div#response-box img {
-      height: 250px; }
-  div.container form#city-searcher {
-    position: absolute;
-    bottom: 5rem;
-    width: 600px;
-    left: 50vw;
-    margin-left: -300px; }
-    div.container form#city-searcher input {
-      margin: auto 0.25rem;
-      padding: 0.75rem;
-      font-family: 'Nunito', sans-serif;
-      border-radius: 5px;
-      border: 1px #444 solid; }
-    div.container form#city-searcher input#submit {
-      background-color: coral;
-      font-weight: bold;
-      border: none; }
-    div.container form#city-searcher input#submit:hover {
-      cursor: pointer; }
+  @media only screen and (min-width: 700px) {
+    div.container div#response-box {
+      width: 600px;
+      margin: 0 auto; }
+      div.container div#response-box h1 {
+        font-size: 4rem; }
+      div.container div#response-box p {
+        font-size: 2rem; }
+      div.container div#response-box img {
+        height: 250px; }
+    div.container form#city-searcher {
+      position: absolute;
+      bottom: 5rem;
+      width: 600px;
+      left: 50vw;
+      margin-left: -300px; }
+      div.container form#city-searcher input {
+        margin: auto 0.25rem;
+        padding: 0.75rem;
+        font-family: 'Nunito', sans-serif;
+        border-radius: 5px;
+        border: 1px #444 solid; }
+      div.container form#city-searcher input#submit {
+        background-color: coral;
+        font-weight: bold;
+        border: none; }
+      div.container form#city-searcher input#submit:hover {
+        cursor: pointer; } }

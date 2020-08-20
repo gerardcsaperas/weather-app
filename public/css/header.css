@@ -19,9 +19,13 @@ header {
   header nav {
     margin-right: 2rem;
     font-size: 2rem; }
+    header nav .navbar {
+      font-size: 3rem; }
     header nav a {
       color: whitesmoke;
       text-decoration: none;
       margin: 1rem; }
     header nav a:hover {
       text-decoration: underline; }
+    header nav li.nav-item::marker {
+      display: none; }
