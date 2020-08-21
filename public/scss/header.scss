@@ -21,9 +21,6 @@ header {
     }
 
     nav {
-        .navbar {
-            font-size: 3rem;
-        }
         margin-right: 2rem;
         font-size: 2rem;
         a {
@@ -33,9 +30,6 @@ header {
         }
         a:hover {
             text-decoration: underline;
-        }
-        li.nav-item::marker {
-            display: none;
         }
     }
 }

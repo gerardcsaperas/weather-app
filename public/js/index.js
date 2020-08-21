@@ -48,34 +48,40 @@ function fetchWeather(latitude = null, longitude = null, city = null) {
 
 	try {
 		fetch(url).then((res) => res.json()).then((data) => {
-			title.innerHTML = data.region;
-			message.innerHTML = `It's currently ${data.weatherDescription} in ${data.region}, with a temperature of ${data.currTemp} ºC.`;
-			// Set image depending on the weather description (sunny, cloudy, rainy...)
-			switch (data.weatherDescription) {
-				case 'Sunny':
-					weatherImage.src = '/img/sunny.png';
-					break;
-				case 'Overcast':
-					weatherImage.src = '/img/overcast.png';
-					break;
-				case 'Cloudy':
-					weatherImage.src = '/img/cloudy.png';
-					break;
-				case 'Partly cloudy':
-					weatherImage.src = '/img/partly-cloudy.png';
-					break;
-				case 'Snowing':
-					weatherImage.src = '/img/snowing.png';
-					break;
-				case 'Shower In Vicinity':
-					weatherImage.src = 'img/rainy.png';
-					break;
-				case 'Raining':
-					weatherImage.src = 'img/rainy.png';
-					break;
-				default:
-					weatherImage.src = '/img/idk.gif';
-					break;
+			if (data.code === 615) {
+				title.innerHTML = 'Oops!';
+				weatherImage.src = '/img/idk.gif';
+				message.innerHTML = `Can't find ${city}, please make sure you spelled it correctly.`;
+			} else {
+				title.innerHTML = data.region;
+				message.innerHTML = `It's currently ${data.weatherDescription} in ${data.region}, with a temperature of ${data.currTemp} ºC.`;
+				// Set image depending on the weather description (sunny, cloudy, rainy...)
+				switch (data.weatherDescription) {
+					case 'Sunny':
+						weatherImage.src = '/img/sunny.png';
+						break;
+					case 'Overcast':
+						weatherImage.src = '/img/overcast.png';
+						break;
+					case 'Cloudy':
+						weatherImage.src = '/img/cloudy.png';
+						break;
+					case 'Partly cloudy':
+						weatherImage.src = '/img/partly-cloudy.png';
+						break;
+					case 'Snowing':
+						weatherImage.src = '/img/snowing.png';
+						break;
+					case 'Shower In Vicinity':
+						weatherImage.src = 'img/rainy.png';
+						break;
+					case 'Raining':
+						weatherImage.src = 'img/rainy.png';
+						break;
+					default:
+						weatherImage.src = '/img/idk.gif';
+						break;
+				}
 			}
 		});
 	} catch (err) {

@@ -12,20 +12,23 @@ const getCurrentWeatherFromLatLon = (req, res, next) => {
 
 	request({ url: url, json: true }, (err, res, body) => {
 		if (err) throw err;
-		if (body.error) return console.log(body.error.info);
+		if (body.error) {
+			req.data = body.error;
+			next();
+		} else {
+			const weatherDescription = body.current.weather_descriptions[0];
+			const currTemp = body.current.temperature;
+			const region = body.location.region;
 
-		const weatherDescription = body.current.weather_descriptions[0];
-		const currTemp = body.current.temperature;
-		const region = body.location.region;
+			const response = {
+				weatherDescription,
+				currTemp,
+				region
+			};
 
-		const response = {
-			weatherDescription,
-			currTemp,
-			region
-		};
-
-		req.data = response;
-		next();
+			req.data = response;
+			next();
+		}
 	});
 };
 
@@ -38,20 +41,23 @@ const getCurrentWeatherFromCity = (req, res, next) => {
 
 	request({ url: url, json: true }, (err, res, body) => {
 		if (err) throw err;
-		if (body.error) return console.log(body.error.info);
+		if (body.error) {
+			req.data = body.error;
+			next();
+		} else {
+			const weatherDescription = body.current.weather_descriptions[0];
+			const currTemp = body.current.temperature;
+			const region = body.location.name;
 
-		const weatherDescription = body.current.weather_descriptions[0];
-		const currTemp = body.current.temperature;
-		const region = body.location.name;
+			const response = {
+				weatherDescription,
+				currTemp,
+				region
+			};
 
-		const response = {
-			weatherDescription,
-			currTemp,
-			region
-		};
-
-		req.data = response;
-		next();
+			req.data = response;
+			next();
+		}
 	});
 };
 
