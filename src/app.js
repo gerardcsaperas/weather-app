@@ -6,6 +6,7 @@ const hbs = require('hbs');
 const { getCurrentWeatherFromLatLon, getCurrentWeatherFromCity } = require('./middleware/weather');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');
@@ -40,6 +41,6 @@ app.get('/weather-from-city', getCurrentWeatherFromCity, (req, res) => {
 // Get 404s
 app.get('*', (req, res) => res.render('404'));
 
-app.listen(3000, () => {
-	console.log('Server running on port 3000...');
+app.listen(PORT, () => {
+	console.log(`App started on port ${PORT}...`);
 });
